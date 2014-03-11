@@ -4,7 +4,7 @@ from archiver.conditionals import user_can_manage
 
 class APIOption(NavOption):
     name = u'API'
-    url = '/acm_members/'
+    url = '/acm_members/api/'
 
 class ManageOption(NavOption):
     """
@@ -23,8 +23,9 @@ class AcmMembersNav(Nav):
         They can use the NavOption and have the main Nav with their Home state
     """
     name = u'ACM Members'
-    view = ''
     icon = 'cog'
+    dashboard = True
+    view = 'acm_members.views.dashboard'
     nav_group = 'apis'
     options = [ManageOption, APIOption]
 

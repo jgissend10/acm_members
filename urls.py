@@ -15,5 +15,6 @@ router.register(r'members', MemberViewSet)
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browseable API.
 urlpatterns = patterns('',
-    url(r'^', include(router.urls)),
+    url(r'^$', 'acm_members.views.dashboard'),
+    url(r'^api/', include(router.urls)),
 )
