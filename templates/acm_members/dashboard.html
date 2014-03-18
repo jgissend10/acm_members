@@ -1,2 +1,144 @@
 {% extends "dashboard-base.html" %}
-{% block content %}ACM MEMBERS{% endblock %}
+{% load static %}
+{% block content %}
+<div class="page-header">
+  <h1>ACM Members <small>Tell us about yourself!</small></h1>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-7">
+      <div class="well well-sm">ACM Members is a project for recording the current UofL SpeedACM Chapter Members and information about them.</div>
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">ACM Members Schema</div>
+        <div class="panel-body">
+          <p>The Following is the Datastore Schema for ACM Members</p>
+        </div>
+
+        <!-- Table -->
+        <div class="table-responsive">
+        <table class="table table-condensed table-striped table-bordered">
+          <thead>
+            <tr>
+              <td>Field</td>
+              <td>Description</td>    
+              <td>Type</td>
+              <td>Optional</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>first_name</td>
+              <td>Member First Name</td>
+              <td>string(20)</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>last_name</td>
+              <td>Member Last Name</td>
+              <td>string(20)</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>email</td>
+              <td>Member Email</td>
+              <td>email</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>uofl_user_id</td>
+              <td>Member ulink id</td>
+              <td>string(10)</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>join_date</td>
+              <td>Date Member Joined Chapter</td>
+              <td>date</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>paid</td>
+              <td>Whether the Member has paid dues</td>
+              <td>boolean</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>paid_amount</td>
+              <td>Amount Member Paid</td>
+              <td>integer</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>paid_date</td>
+              <td>Date member Paid</td>
+              <td>date</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>officer</td>
+              <td>Whether the Member is a Chapter Officer</td>
+              <td>boolean</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>officer_position</td>
+              <td>Officer Position held by Member</td>
+              <td>string(40)</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>personal_url</td>
+              <td>Link to personal webspace of Member</td>
+              <td>url</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>fun_fact</td>
+              <td>Fun fact about Member</td>
+              <td>text</td>
+              <td>Yes</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title">Project Manager</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://lh4.googleusercontent.com/-8ljbRreGGbA/UvgMVYMHSaI/AAAAAAAAMHg/YFEpryv9jwM/s256-no/cd8ad33c-2d24-4af7-a50d-952bd288ab31" name="aboutme" width="100" height="100" class="img-circle img-responsive" />
+            </div>
+            <div class="col-md-8">
+              <p><i class="glyphicon glyphicon-user"></i> James Gissendaner Jr.
+                <br/><i class="glyphicon glyphicon-envelope"></i> {{ "jamestgissendanerjr@gmail.com"|urlize }}
+                <br/><i class="glyphicon glyphicon-globe"></i> <a href="http://www.github.com/jgissend10/">Github</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="github-widget" data-repo="jgissend10/acm_members"></div>
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Project Members</div>
+          <!-- List group -->
+          <ul class="list-group">
+            {% for member in members %}
+            <li class="list-group-item"><a href="{{ member.get_absolute_url }}">{{ member }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block extrajs %}
+    {{ block.super }}
+    <script src="{% static "jquery.githubRepoWidget.js" %}"></script>
+{% endblock %}
+

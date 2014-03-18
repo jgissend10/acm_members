@@ -16,6 +16,10 @@ class ManageOption(NavOption):
     view = ''
     conditional = {'function': user_can_manage, 'args': [], 'kwargs': {'app_label':'acm_members'}}
 
+class DashboardOption(NavOption):
+    name = u'Dashboard'
+    view = 'acm_members.views.dashboard'
+
 class AcmMembersNav(Nav):
     """
         This is a primary Navigation link, Most apps should only define one of these
@@ -24,9 +28,8 @@ class AcmMembersNav(Nav):
     """
     name = u'ACM Members'
     icon = 'cog'
-    view = 'acm_members.views.dashboard'
     nav_group = 'apis'
-    options = [ManageOption, APIOption]
+    options = [DashboardOption, ManageOption, APIOption]
     conditional = {'function': user_can_see, 'args': [], 'kwargs': {'app_label':'acm_members'}}
 
 nav_groups.register(AcmMembersNav)
