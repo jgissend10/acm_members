@@ -14,6 +14,9 @@ class Member(models.Model):
     uofl_user_id = models.CharField(max_length=10)
     personal_url = models.URLField(null=True)
     fun_fact = models.TextField(null=True)
+    favorite_color = models.CharField(max_length=15, null=True)
+    favorite_shape = models.CharField(max_length=20, null=True)
+    score = models.IntegerField(null=True)
 
     def __unicode__(self):
         return self.first_name + " " + self.last_name 

@@ -1,13 +1,6 @@
-{% extends "dashboard-base.html" %}
+{% extends "dashboard-main-base.html" %}
 {% load static %}
-{% block content %}
-<div class="page-header">
-  <h1>ACM Members <small>Tell us about yourself!</small></h1>
-</div>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-7">
-      <div class="well well-sm">ACM Members is a project for recording the current UofL SpeedACM Chapter Members and information about them.</div>
+{% block projectinfo %}
       <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">ACM Members Schema</div>
@@ -99,49 +92,26 @@
               <td>text</td>
               <td>Yes</td>
             </tr>
+            <tr>
+              <td>favorite_color</td>
+              <td>Member's favorite color. Preferably in HEX</td>
+              <td>string(15)</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>favorite_shape</td>
+              <td>Member's favorite shape</td>
+              <td>string(20)</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>score</td>
+              <td></td>
+              <td>integer</td>
+              <td>Yes</td>
+            </tr>
           </tbody>
         </table>
         </div>
       </div>
-    </div>
-    <div class="col-md-5">
-      <div class="panel panel-danger">
-        <div class="panel-heading">
-          <h3 class="panel-title">Project Manager</h3>
-        </div>
-        <div class="panel-body">
-          {% for creator in creators %}
-          <div class="row">
-            <div class="col-md-4">
-              <img src="{{ creator.archiverprofile.picture.url }}" name="aboutme" width="100" height="100" class="img-circle img-responsive" />
-            </div>
-            <div class="col-md-8">
-              <p><i class="glyphicon glyphicon-user"></i> <a href="{{ creator.get_absolute_url }}">{{ creator.get_full_name }}</a>
-                <br/><i class="glyphicon glyphicon-envelope"></i> {{ creator.email|urlize }}
-                <br/><i class="glyphicon glyphicon-globe"></i> <a href="{{ creator.archiverprofile.personal_url }}">{{ creator.archiverprofile.url_display_text }}</a></p>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-      <div class="github-widget" data-repo="jgissend10/acm_members"></div>
-      <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Project Members</div>
-          <!-- List group -->
-          <ul class="list-group">
-            {% for member in members %}
-            <li class="list-group-item"><a href="{{ member.get_absolute_url }}">{{ member }}</a></li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock %}
-{% block extrajs %}
-    {{ block.super }}
-    <script src="{% static "jquery.githubRepoWidget.js" %}"></script>
-{% endblock %}
-
