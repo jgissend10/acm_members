@@ -6,7 +6,6 @@ app_info = {
     'flavor_text':"Tell us about yourself!",
     'description':"ACM Members is a project for recording the current UofL SpeedACM Chapter Members and information about them.",
     'public':True,
-    'github':"jgissend10/acm_members"
 }
 
 try:
